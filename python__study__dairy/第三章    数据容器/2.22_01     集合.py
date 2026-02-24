@@ -1,4 +1,4 @@
-'''#介绍:集合(set)是一种无序的、不可重复、可修改的数据容器。
+#介绍:集合(set)是一种无序的、不可重复、可修改的数据容器。
 # 定义集合
 s8 = {"C", "D", "X", "T", "0","U"}
 # 定义空集合
@@ -48,7 +48,7 @@ print(s3.union(s2))
 # intersection():求两个集令的交集
 print(s2.intersection(s3))
 print(s2.intersection(s3))
-'''
+
 
 
 #--------------------------------------------案例---------------------------------------------
@@ -74,8 +74,9 @@ print(french_set.intersection(art_set ))
 s1=french_set.intersection(art_set.intersection(football_set).intersection(basketball_set))
 print("同时选修四门课的人有:",s1)
 
-#3. 找出选修了足球,但是没有选修篮球的学生   #差集可用符号 - 表示    并集可用 + 表示
+#3. 找出选修了足球,但是没有选修篮球的学生   #差集可用符号 - 表示    并集可用 | 表示
 print("选修了足球,但是没有选修篮球的是:",football_set.difference(basketball_set))
+###这个需求也可以使用集合推导式完成   fb_set3 = {s for s in football_set if s not in basketball_set}
 
 #4. 统计每一个学生选修的课程数量
 all_list=[*football_set,*basketball_set,*art_set,*french_set]    #将集合中的元素解包后用列表承接,因为列表的数据可重复
