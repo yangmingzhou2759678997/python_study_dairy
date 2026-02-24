@@ -111,7 +111,6 @@ for s in students: # ("S001", "EM", 85, 92, 78)
 #    total = chinese + math + english
 #    avg = total / 3
 #    print(f"{id} \t {name} \t {chinese} \t {math} \t {english} \t {total} \t {avg :. 1f}")
- T
 
 # 2. 统计各科成绩的最低分、最高分、平均分,并输出。
 # 2.1 获取到各科的成绩列表
