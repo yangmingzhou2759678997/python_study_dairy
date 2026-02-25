@@ -1,4 +1,4 @@
-'''''#字典:使用键值对(key:value)来存储数据,每一个键都对应一个值,通过键(key)可以快速找到对应的值(value)
+#字典:使用键值对(key:value)来存储数据,每一个键都对应一个值,通过键(key)可以快速找到对应的值(value)
 #特点:键值对(key:value)存储、键(key)不能重复、可修改。
 
 # 定义字典
@@ -84,7 +84,7 @@ for item in dict1.items( ):
     print(f"{item[0]} : {item[1]}")
 for k,v in dict1.items():
     print(f"{k} : {v}")
-'''''
+
 
 
 #------------------------------------------案例----------------------------------------------
@@ -101,15 +101,18 @@ while True:
     menu = input("你想要执行哪项操作? 1.添加购物车 2.修改购物车 3.删除购物车 4.查询购物车 5.退出购物车: ")
     match  menu:
         case "1":
-            a=input("请输入你要添加的商品名:")
-            dict[a]={"价格":float(input("请录入商品的价格:")),"数量":int(input("请录入商品的数量:"))}
+            shopping_name=input("请输入你要添加的商品名:")
+            dict[shopping_name]={"价格":float(input("请录入商品的价格:")),"数量":int(input("请录入商品的数量:"))}
         case "2":
-            b = input("请输入你要修改的商品名:")
-            dict[b]= {"价格":float(input("请录入商品新的价格:")),"数量":int(input("请录入商品新的数量:"))}
+            shopping_name= input("请输入你要修改的商品名:")
+            dict[shopping_name]= {"价格":float(input("请录入商品新的价格:")),"数量":int(input("请录入商品新的数量:"))}
         case "3":
             del dict [input("请输入你要删除的商品名:")]
         case "4":
-            dict_list = list(dict.items())
-            print(f"当前购物车存储的商品信息如下:",dict_list)
+            for shopping_name in dict.keys():
+                shopping_passage=dict[shopping_name]
+                shopping_price=shopping_passage["价格"]
+                shopping_num=shopping_passage["数量"]
+                print(f"商品名:{shopping_name},商品价格:{shopping_price},商品数量:{shopping_num}")
         case "5":
             break
