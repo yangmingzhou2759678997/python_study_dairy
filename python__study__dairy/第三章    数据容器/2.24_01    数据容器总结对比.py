@@ -53,7 +53,6 @@ while True:
             for student_name in student_passage.keys():
                 student_score = student_passage[student_name]
                 print(f"{student_name}的语文成绩为:{student_score["语文"]},数学成绩为:{student_score["数学"]},英语成绩为:{student_score["英语"]}")
-
         case "6":
             english_list=[]
             math_list=[]
