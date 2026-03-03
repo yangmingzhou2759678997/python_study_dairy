@@ -84,7 +84,7 @@ print(stu)
 
 #类型:
 #1.基于位置传递
-def calc_data(*args):
+def calc_data(*args):   #--->只能封装位置传递的不定长参数
 
     return args
 #函数调用
@@ -98,19 +98,66 @@ print(data2)
 
 
 #2.基于关键字传递
-def calc_data(*args, ** kwargs):
+def calc_data(*args, **kwargs):
     min_data = min(args)
     max_data = max(args)
     avg_data = sum(args) / len(args)
-    if kwargs.get('round' ):
-        avg_data = round(avg_data, kwargs.get('round' ))
-    return min_data, max_data, avg_data
+    if kwargs.get("round") is not None:
+        avg_data = round(avg_data, kwargs.get("round"))
+    if kwargs.get("print") :
+        print(f"最大值为{max_data},最小值为{min_data},平均值为{avg_data}")
+    return min_data, max_data, avg_data, kwargs.get("round")
 
-data = calc_data(100, 200, 300, 400, round=2, count=0)
+data = calc_data(107, 112, 92, round=3, print=True) #--->round 是键名,3是键值,所以说**kwargs封装的是字典
 print(data)
 
-data = calc_data(33, 11, 28, 91, 32, 75, 49)
-print(data)
+data = calc_data(33, 11, 28, 91, 32, 75, 49)   # 注意:此处调用函数时,没有传递kwargs字典值,则函数中不能用kwargs["round"]
+print(data)                                          #  取值,这种方式会在没有值的时候报错,这里只能用kwargs.get("round"),这种
+                                                     #  方式会在没有值的时候默认返回None,相比前者适配性更高
+
+# 总结:** kwargs:不定长关键字参数,函数调用时,通过关键字参数传递多个参数封装到字典(dict)
+
+
+
+#--------args与kwargs的应用场景辨析------------
+# args与 ** kwargs的应用场景?
+#
+# *args适用于处理数量不确定的数据
+# ** kwargs适用于处理数量不确定的选项(函数的配置参数,用来定制函数的行为)
+#
+#其中:数据与选项 举例:
+
+# 核心数据:你要什么
+#点奶茶(“珍珠奶茶”)
+# 选项:你要什么样的
+#点奶茶(“珍珠奶茶”,甜度=“少糖”,冰度=”去冰”,加料=["布丁”,“珍珠”],大小=“大杯”)
+
+
+
+
+#------------------------------------------函数参数类型--------------------------------------
+# 普通参数:数字、布尔、字符串、列表、元组、集合、字典等。           特殊参数:函数。
+
+#特殊参数举例:
+def add (x, y):
+    return x+y
+
+def subtract (x, y):
+    return x-y
+
+def calc(x, y, oper):    #这里的oper意思是传递个函数作为参数
+    return oper(x, y)   #函数涉及 x与y 两个参数
+
+result = calc(10, 20, add)   #这里的add传递的是函数中封装的逻辑,10与20传递的是实际要计算的数据
+print(result)                     #此时即add作为上述oper的实参,意思是此处调用add函数进行x与y的相关计算操作
+                                  #函数嵌套使用
+
+
+
+
+
+#-----------------------------------------匿名函数--------------------------------------
+# 匿名函数 指的是没有名称的函数,需要通过lambda表达式来声明函数,可以简化简单函数的编写(单行表达式)。因为是单行表达式,所以只适用于简单的函数逻辑
 
 
 

@@ -50,8 +50,8 @@ while True:
                 student_score = student_passage[student_name]
                 print(f"{student_name}的语文成绩为:{student_score["语文"]},数学成绩为:{student_score["数学"]},英语成绩为:{student_score["英语"]}")
         case "5":
-            for student_name in student_passage.keys():
-                student_score = student_passage[student_name]
+            for student_name,student_score in student_passage.items():
+                #student_score = student_passage[student_name]
                 print(f"{student_name}的语文成绩为:{student_score["语文"]},数学成绩为:{student_score["数学"]},英语成绩为:{student_score["英语"]}")
         case "6":
             english_list=[]
@@ -74,13 +74,13 @@ while True:
             math_list_avg=sum(math_list)/len(math_list)
             english_list_avg=sum(english_list)/len(english_list)
             #使用列表推导式加上条件语句快速找到目标学生名
-            chinise_min_name =[student_name for student_name,student_score in student_passage.items()  if student_score["语文"] == chinise_list_min]
+            chinise_min_name =[student_name for student_name,student_score in student_passage.items() if student_score["语文"] == chinise_list_min]
             math_min_name =[student_name for student_name,student_score in student_passage.items() if student_score["数学"] == math_list_min]
             english_min_name=[student_name for student_name,student_score in student_passage.items() if student_score["英语"] == english_list_min]
             chinise_max_name=[student_name for student_name,student_score in student_passage.items() if student_score["语文"] == chinise_list_max]
             math_max_name = [student_name for student_name,student_score in student_passage.items() if student_score["数学"] == math_list_max]
             english_max_name = [student_name for student_name,student_score in student_passage.items() if student_score["英语"] == english_list_max]
-            print(f"班级语文平均分为:{chinise_list_avg},数学平均分为:{math_list_avg},英语平均分为:{english_list_avg}")
-            print(f"语文最低分是{chinise_min_name}的{chinise_list_min}数学最低分是{math_min_name}的{math_list_min},英语最低分是{english_min_name}的{english_list_min},\n语文最高分是{chinise_max_name}的{chinise_list_max},数学最低分是{math_max_name}的{math_list_max},英语最高分是{english_max_name}的{english_list_max}")
+            print(f"班级语文平均分为:{chinise_list_avg}分,数学平均分为:{math_list_avg}分,英语平均分为:{english_list_avg}分")
+            print(f"语文最低分是{chinise_min_name}的{chinise_list_min}分,数学最低分是{math_min_name}的{math_list_min}分,英语最低分是{english_min_name}的{english_list_min}分,\n语文最高分是{chinise_max_name}的{chinise_list_max}分,数学最低分是{math_max_name}的{math_list_max}分,英语最高分是{english_max_name}的{english_list_max}分")
         case "7":
             break
