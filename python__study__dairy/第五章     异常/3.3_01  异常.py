@@ -121,7 +121,7 @@ x = 10
 if x > 5:
     raise Exception('x 不能大于 5。x 的值为: {}'.format(x))
 
-#运行报错: Exception: x 不能大于 5。x 的值为: 10
+#此时会运行报错: Exception: x 不能大于 5。x 的值为: 10
 
 
 
